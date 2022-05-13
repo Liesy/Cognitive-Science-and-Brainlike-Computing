@@ -33,6 +33,7 @@ class MLP:
         self.__update(W, b)
 
     def predict(self, x):
+        assert len(x) == len(self.__W), "x must have the same length with train data."
         if not isinstance(x, np.ndarray):
             x = np.array(x)
         ret = np.sum(x * self.__W + self.__b)

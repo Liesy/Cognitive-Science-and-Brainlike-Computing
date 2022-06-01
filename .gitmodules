@@ -1,0 +1,3 @@
+[submodule "Gabor_CNN_PyTorch"]
+	path = Gabor_CNN_PyTorch
+	url = https://github.com/jxgu1016/Gabor_CNN_PyTorch.git

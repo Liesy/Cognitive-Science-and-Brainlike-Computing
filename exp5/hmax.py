@@ -181,14 +181,10 @@ class HMax(nn.Module):
             self.add_module('c1_%02d' % c1.size, c1)
         # Read the universal patch set for the S2 layer
         m = loadmat(universal_patch_set)
-        patches = [patch.reshape(shape[[2, 1, 0, 3]]).transpose(3, 0,
-                                                                2, 1)
-                   for patch, shape in zip(m['patches'][0],
-                                           m['patchSizes'].T)]
+        patches = [patch.reshape(shape[[2, 1, 0, 3]]).transpose(3, 0, 2, 1) for patch, shape in
+                   zip(m['patches'][0], m['patchSizes'].T)]
         # One S2 layer for each patch scale, operating on all C1 layers
-        self.s2_units = [S2(patches=scale_patches,
-                            activation=s2_act)
-                         for scale_patches in patches]
+        self.s2_units = [S2(patches=scale_patches, activation=s2_act) for scale_patches in patches]
         # Explicitly add the S2 units as submodules of the model
         for i, s2 in enumerate(self.s2_units):
             self.add_module('s2_%d' % i, s2)

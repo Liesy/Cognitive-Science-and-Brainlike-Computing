@@ -54,7 +54,7 @@ def create_svm(dataMat, dataLabel, decision='ovr'):
 
 def main():
     train_dataloader, test_dataloader = load_data()  # img:(64,1,28,28)  label:(64)
-    model = HMax(universal_patch_set)
+    model = HMax(universal_patch_set).to(device)
 
     # train
     train_data, train_label = [], []
